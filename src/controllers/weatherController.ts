@@ -6,9 +6,13 @@ const weatherService = new WeatherService();
 
 /** 
  * @swagger 
+ * tags: 
+ *  name: Weather 
+ *  description: Weather management
  * /weather/{location}: 
  *  get: 
  *      summary: Get weather data for a location 
+ *      tags: [Weather]
  *      parameters: 
  *          - in: path 
  *            name: location 

@@ -2,10 +2,14 @@ import { Request, Response } from 'express';
 import logger from '../logger'
 
 /** 
- * @swagger 
+ * @swagger
+ * tags: 
+ *  name: Health 
+ *  description: Health check
  * /health: 
  *  get: 
- *      summary: Returns the health status 
+ *      summary: Returns the health status
+ *      tags: [Health] 
  *      responses: 
  *          200: 
  *              description: Healthy status 
