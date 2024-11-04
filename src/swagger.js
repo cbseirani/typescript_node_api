@@ -7,12 +7,7 @@ const swaggerOptions = {
     info: {
       title: 'Weather API',
       version: '1.0.0',
-      description: 'API for weather data',
-      contact: {
-        name: 'Your Name',
-        email: 'your.email@example.com',
-        url: 'https://example.com',
-      },
+      description: 'API for weather data'
     },
   },
   apis: ['./src/controllers/*.ts'],

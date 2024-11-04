@@ -1,17 +1,23 @@
 import { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
 import { NotFoundError } from '../errors/notFoundError';
 import { NotValidError } from '../errors/notValidError';
+import { ForbiddenError } from '../errors/forbiddenError';
+import { UnauthorizedError } from '../errors/unauthorizedError';
 import logger from '../logger'
 
 export const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
     logger.error(`Error: ${err.message}`);
 
-    if (err instanceof NotFoundError) {
-        res.status(404).json({ error: err.message });
-    } else if (err instanceof NotValidError) {
-        res.status(400).json({ error: err.message });
-    } else {
-        res.status(500).json({ error: 'An unexpected error occurred' });
+    switch (err.constructor) { 
+        case NotFoundError:
+        case NotValidError: 
+        case ForbiddenError: 
+        case UnauthorizedError: 
+            res.status(err.statusCode).json({ error: err.message }); 
+            break; 
+        default: 
+            res.status(500).json({ error: 'An unexpected error occurred' }); break; 
     }
+
     next();
 };
