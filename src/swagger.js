@@ -16,3 +16,5 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
 module.exports = swaggerDocs;
+
+console.log('Swagger file loaded');
